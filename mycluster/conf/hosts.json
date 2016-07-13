@@ -1,0 +1,130 @@
+{
+    "cluster": {
+        "clusternm": "mycluster",
+        "amount": "5",
+        "description": "this is my first cluster",
+        "type": "HA",
+        "hosts": [
+            {
+                "alias": "master",
+                "ip": "192.168.31.120",
+                "port": "22",
+                "user": "hadoop",
+                "password": "zSx5711518",
+                "comps": [
+                    {
+                        "hadoop": "MASTER",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "hbase": "HMASTER",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "zookeeper": "false",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    }
+                ]
+            },
+            {
+                "alias": "secondary",
+                "ip": "192.168.31.140",
+                "port": "22",
+                "user": "hadoop",
+                "password": "zSx5711518",
+                "comps": [
+                    {
+                        "hadoop": "MASTER",
+                        "rstatus": "STANDBY",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "hbase": "HMASTER",
+                        "rstatus": "STANDBY",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "zookeeper": "false",
+                        "rstatus": "STANDBY",
+                        "version": "1.2.5"
+                    }
+                ]
+            },
+            {
+                "alias": "slave01",
+                "ip": "192.168.31.121",
+                "port": "22",
+                "user": "hadoop",
+                "password": "zSx5711518",
+                "comps": [
+                    {
+                        "hadoop": "SLAVE",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "hbase": "REGION",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "zookeeper": "true",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    }
+                ]
+            },
+            {
+                "alias": "slave02",
+                "ip": "192.168.31.122",
+                "port": "22",
+                "user": "hadoop",
+                "password": "zSx5711518",
+                "comps": [
+                    {
+                        "hadoop": "SLAVE",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "hbase": "REGION",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "zookeeper": "true",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    }
+                ]
+            },
+            {
+                "alias": "slave03",
+                "ip": "192.168.31.123",
+                "port": "22",
+                "user": "hadoop",
+                "password": "zSx5711518",
+                "comps": [
+                    {
+                        "hadoop": "SLAVE",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "hbase": "REGION",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    },
+                    {
+                        "zookeeper": "true",
+                        "rstatus": "ACTIVE",
+                        "version": "1.2.5"
+                    }
+                ]
+            }
+        ]
+    }
+}
