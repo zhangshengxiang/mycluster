@@ -1,11 +1,12 @@
-package com.zsx.cluster.vo;
+package com.zsx.cluster.management;
 
 import java.util.List;
 
 import com.zsx.cluster.enums.ClusterType;
 import com.zsx.cluster.enums.Status;
 
-public class Cluster {
+
+public class Cluster implements Runnable{
 	
 	private String clusterNM;
 	private Integer amount;
@@ -51,4 +52,19 @@ public class Cluster {
 		this.cstatus = cstatus;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return "{"+"clusterNM:"+clusterNM+","+
+					"amount:"+amount+","+
+					"description:"+description+","+
+					"type:"+type+","+
+					"hosts:"+hosts.toString()+","+
+					"cstatus:"+cstatus+","+
+				"}";
+	}
+
+	public void run() {
+		
+	}
 }

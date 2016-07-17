@@ -1,6 +1,5 @@
 package com.zsx.cluster.components;
 
-public interface MyComponent {
+public interface Role {
 
-	
 }

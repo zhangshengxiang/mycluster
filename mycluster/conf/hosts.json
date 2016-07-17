@@ -1,9 +1,9 @@
 {
-    "cluster": {
         "clusternm": "mycluster",
         "amount": "5",
         "description": "this is my first cluster",
         "type": "HA",
+        "cstatus":"ACTIVE",
         "hosts": [
             {
                 "alias": "master",
@@ -126,5 +126,4 @@
                 ]
             }
         ]
-    }
 }

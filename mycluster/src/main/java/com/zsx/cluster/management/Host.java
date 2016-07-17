@@ -1,18 +1,18 @@
-package com.zsx.cluster.vo;
+package com.zsx.cluster.management;
 
 import java.util.List;
 
-import com.zsx.cluster.components.MyComponent;
+import com.zsx.cluster.components.Role;
 import com.zsx.cluster.enums.Status;
 
-public class Host {
+public class Host implements Runnable{
 	
 	private String alias;
 	private String ip;
 	private Integer port;
 	private String user;
 	private String password;
-	private List<MyComponent> comps;
+	private List<Role> comps;
 	private Status hstatus;
 	
 	
@@ -52,11 +52,15 @@ public class Host {
 	public void setHstatus(Status hstatus) {
 		this.hstatus = hstatus;
 	}
-	public List<MyComponent> getComps() {
+	public List<Role> getComps() {
 		return comps;
 	}
-	public void setComps(List<MyComponent> comps) {
+	public void setComps(List<Role> comps) {
 		this.comps = comps;
+	}
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

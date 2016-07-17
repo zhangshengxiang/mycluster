@@ -1,0 +1,33 @@
+//		List<Cluster> clist = new ArrayList<Cluster>();
+//		List<Host> hlist = new ArrayList<Host>();
+//		List<MyComponent> list = new ArrayList<MyComponent>();
+//		//case1 praseJson
+//		MyHadoop r = new MyHadoop();
+//		r.setHadoop(HadoopType.MASTER);
+//		r.setRstatus(Status.ACTIVE);
+//		r.setVersion("1.2.5");
+//		list.add(r);
+//		
+//		Host h = new Host();
+//		h.setAlias("master");
+//		h.setIp("192.168.31.120");
+//		h.setHstatus(Status.ACTIVE);
+//		h.setPassword("hadoop");
+//		h.setPort(22);
+//		h.setUser("hadoop");
+//		h.setComps(list);
+//		hlist.add(h);
+//		
+//		cluster = new Cluster();
+//		cluster.setAmount(5);
+//		cluster.setClusterNM("mycluster");
+//		cluster.setCstatus(Status.ACTIVE);
+//		cluster.setDescription("my first cluster");
+//		cluster.setHosts(hlist);
+//		cluster.setType(ClusterType.HA);
+//		clist.add(cluster);
+		
+		//Object to json
+//		System.out.println(parseJson(clist));
+		
+		//json to object

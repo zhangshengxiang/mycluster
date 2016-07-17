@@ -1,64 +1,78 @@
 package com.zsx.cluster;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.zsx.cluster.components.MyComponent;
-import com.zsx.cluster.components.impl.MyHadoop;
-import com.zsx.cluster.enums.ClusterType;
-import com.zsx.cluster.enums.HadoopType;
-import com.zsx.cluster.enums.Status;
-import com.zsx.cluster.vo.Cluster;
-import com.zsx.cluster.vo.Host;
+import com.zsx.cluster.core.RolesThreadFactory;
+import com.zsx.cluster.management.Cluster;
 
 public class StartHA {
-
-	public static void main(String[] args) {
-		List<Cluster> clist = new ArrayList<Cluster>();
-		List<Host> hlist = new ArrayList<Host>();
-		List<MyComponent> list = new ArrayList<MyComponent>();
-		//case1 praseJson
-		MyHadoop r = new MyHadoop();
-		r.setHadoop(HadoopType.MASTER);
-		r.setRstatus(Status.ACTIVE);
-		r.setVersion("1.2.5");
-		list.add(r);
-		
-		Host h = new Host();
-		h.setAlias("master");
-		h.setIp("192.168.31.120");
-		h.setHstatus(Status.ACTIVE);
-		h.setPassword("hadoop");
-		h.setPort(22);
-		h.setUser("hadoop");
-		h.setComps(list);
-		hlist.add(h);
-		
-		Cluster c = new Cluster();
-		c.setAmount(5);
-		c.setClusterNM("mycluster");
-		c.setCstatus(Status.ACTIVE);
-		c.setDescription("my first cluster");
-		c.setHosts(hlist);
-		c.setType(ClusterType.HA);
-		clist.add(c);
-		
-		System.out.println(parseJson(clist));
-		
-		
+	private static Cluster cluster;
+	
+	private static <T> T parseObject(String json, Class<T> c) {
+		return JSON.parseObject(json, c);
 	}
 	
-	public static void  parseObject(String json){
-		Cluster c = JSON.parseObject(json, Cluster.class);
+	public static String reader() throws Exception{
+		StringBuilder content = new StringBuilder();
+		byte[] bts = new byte[1024];
+		int lenth = 0;
+		File f = new File("conf/hosts.json");
+		InputStream in = new FileInputStream(f);
+		while((lenth=in.read(bts, 0,bts.length))!=-1){
+			for(int i = 0;i< lenth;i++){
+				char ctmp = (char)bts[i];
+				if(ctmp==0x0A||ctmp==0x0D||ctmp==0x09){
+					//discard current char
+				}else{
+					content.append(ctmp);
+				}
+			}
+		}
+		in.close();
+		return content.toString();
 	}
 	
 	public static String parseJson(List<Cluster> list){
 		String json = null;
 		
-		json = JSON.toJSON(list.get(0)).toString();
-		
+		for(Cluster c:list){
+		json = JSON.toJSON(c).toString();
+		}
 		return json;
+	}
+	
+	public void init(){
+		run();
+	}
+	
+	public void run(){
+		//thread tree
+		
+		ThreadFactory threads = new RolesThreadFactory.Bulider().setName("ROLES").bulid();
+		ExecutorService execute = Executors.newFixedThreadPool(5, threads);
+		
+		for(int i=0;i<5;i++){
+			//execute.submit();
+		}
+		
+		while(true){
+			
+		}
+	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		String json = reader();
+		System.out.println(json);
+		cluster = parseObject(json,Cluster.class);
+		System.out.println(cluster.toString());
 	}
 	
 }
