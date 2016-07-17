@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.zsx.cluster.core.RolesThreadFactory;
-import com.zsx.cluster.management.Cluster;
+import com.zsx.cluster.management.impl.Cluster;
 
 public class StartHA {
 	private static Cluster cluster;

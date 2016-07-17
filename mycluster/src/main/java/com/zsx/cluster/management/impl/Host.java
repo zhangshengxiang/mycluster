@@ -1,4 +1,4 @@
-package com.zsx.cluster.management;
+package com.zsx.cluster.management.impl;
 
 import java.util.List;
 

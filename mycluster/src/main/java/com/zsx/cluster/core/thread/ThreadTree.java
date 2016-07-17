@@ -2,8 +2,8 @@ package com.zsx.cluster.core.thread;
 
 import java.util.TreeMap;
 
-import com.zsx.cluster.management.Cluster;
-import com.zsx.cluster.management.Host;
+import com.zsx.cluster.management.impl.Cluster;
+import com.zsx.cluster.management.impl.Host;
 
 public class ThreadTree {
 	
